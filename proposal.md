@@ -38,4 +38,3 @@ Minimal Viable Outcome:
 
 - Week N (Final)
   1. Make fancy result generation animation?
-  2. Goal 2
