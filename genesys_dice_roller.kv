@@ -1,0 +1,22 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        Label:
+            id: title_label
+            text: "Genesys/Star Wars Dice Roller!"
+            font_size: 32
+            halign: "center"
+            size_hint: (1, .25)
+        Button:
+                id: roll_input
+                text: "Roll"
+                font_size: 24
+                on_press: root.press_roll(0)
+                size_hint: (1, .75)
+        Label:
+            id: results_label
+            text: ""
+            font_size: 28
+            halign: "center"
+            size_hint: (1, .25)
