@@ -6,56 +6,38 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 
 Builder.load_file('genesys_dice_roller.kv')
+
+class dice():
+    def __init__(self, faces, count = 1):
+        self.faces = faces
+        self.count = count
+
 class MyLayout(Widget):
     # TODO: Refactor this to follow DRY.
-    die_faces_Yellow = ListProperty([1,2,3,4,5,6,7,8,9,10,11,12])
-    die_count_Yellow = NumericProperty(1)
-    die_faces_Green = ListProperty([1,2,3,4,5,6,7,8])
-    die_count_Green = NumericProperty(1)
-    die_faces_Blue = ListProperty([1,2,3,4,5,6])
-    die_count_Blue = NumericProperty(1)
-    die_faces_Red = ListProperty([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
-    die_count_Red = NumericProperty(1)
-    die_faces_Purple = ListProperty([8, 7, 6, 5, 4, 3, 2, 1])
-    die_count_Purple = NumericProperty(1)
-    die_faces_Black = ListProperty([6, 5, 4, 3, 2, 1])
-    die_count_Black = NumericProperty(1)
+    dice_types = {}
+    dice_types["Yellow"] = dice([1,2,3,4,5,6,7,8,9,10,11,12])
+    dice_types["Green"] = dice([1,2,3,4,5,6,7,8])
+    dice_types["Blue"] = dice([1,2,3,4,5,6])
+    dice_types["Red"] = dice([-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1])
+    dice_types["Purple"] = dice([-8, -7, -6, -5, -4, -3, -2, -1])
+    dice_types["Black"] = dice([-6, -5, -4, -3, -2, -1])
+
 
     def press_roll(self, button):
         result = 0
         # TODO: Refactor this to follow DRY
-        for i in range(0, self.die_count_Yellow):
-            result += roll_die(self.die_faces_Yellow)
-        for i in range(0, self.die_count_Green):
-            result += roll_die(self.die_faces_Green)
-        for i in range(0, self.die_count_Blue):
-            result += roll_die(self.die_faces_Blue)
-        for i in range(0, self.die_count_Red):
-            result -= roll_die(self.die_faces_Red)
-        for i in range(0, self.die_count_Purple):
-            result -= roll_die(self.die_faces_Purple)
-        for i in range(0, self.die_count_Black):
-            result -= roll_die(self.die_faces_Black)
+        for k,v in MyLayout.dice_types.items():
+            for i in range(v.count):
+                result += roll_die(v.faces)
         self.ids.results_label.text = f"{result}"
+
     def press_mod_dice(self, dice, mod):
-        if dice == "Yellow":
-            self.die_count_Yellow = adjust_value(self.die_count_Yellow, mod, 0, 5)
-            self.ids.yellow_die.text = f"{self.die_count_Yellow}"
-        if dice == "Green":
-            self.die_count_Green = adjust_value(self.die_count_Green, mod, 0, 5)
-            self.ids.green_die.text = f"{self.die_count_Green}"
-        if dice == "Blue":
-            self.die_count_Blue = adjust_value(self.die_count_Blue, mod, 0, 5)
-            self.ids.blue_die.text = f"{self.die_count_Blue}"
-        if dice == "Red":
-            self.die_count_Red = adjust_value(self.die_count_Red, mod, 0, 5)
-            self.ids.red_die.text = f"{self.die_count_Red}"
-        if dice == "Purple":
-            self.die_count_Purple = adjust_value(self.die_count_Purple, mod, 0, 5)
-            self.ids.purple_die.text = f"{self.die_count_Purple}"
-        if dice == "Black":
-            self.die_count_Black = adjust_value(self.die_count_Black, mod, 0, 5)
-            self.ids.black_die.text = f"{self.die_count_Black}"
+        for k,v in MyLayout.dice_types.items():
+            if dice == k:
+                v.count = adjust_value(int(v.count), mod, 0, 5)
+                for widget_id, widget_instance in self.ids.items():
+                    if k.lower() in widget_id.lower():
+                        widget_instance.text = f"{v.count}"
     
 
 class DiceRollerApp(App):
