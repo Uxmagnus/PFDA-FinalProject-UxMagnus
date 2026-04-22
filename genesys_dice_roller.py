@@ -40,10 +40,13 @@ class MyLayout(Widget):
     def press_mod_dice(self, dice, mod):
         if dice == "Yellow":
             self.die_count_Yellow = adjust_value(self.die_count_Yellow, mod, 1, 5)
+            self.ids.yellow_die.text = f"{self.die_count_Yellow}"
         if dice == "Green":
             self.die_count_Green = adjust_value(self.die_count_Green, mod, 1, 5)
+            self.ids.green_die.text = f"{self.die_count_Green}"
         if dice == "Blue":
             self.die_count_Blue = adjust_value(self.die_count_Blue, mod, 1, 5)
+            self.ids.blue_die.text = f"{self.die_count_Blue}"
         if dice == "Red":
             self.die_count_Red = adjust_value(self.die_count_Red, mod, 1, 5)
         if dice == "Purple":

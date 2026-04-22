@@ -8,6 +8,78 @@
             font_size: 32
             halign: "center"
             size_hint: (1, .25)
+        GridLayout:
+            cols: 3
+            rows: 4
+
+            Label:
+                text: "Proficiency"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                text: "Ability"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                text: "Boost"
+                font_size: 32
+                halign: "center"
+
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Yellow", 1)
+                size_hint: (1, .5)
+            
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Green", 1)
+                size_hint: (1, .5)
+
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Blue", 1)
+                size_hint: (1, .5)
+            
+            Label:
+                id: yellow_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                id: green_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                id: blue_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Yellow", -1)
+                size_hint: (1, .5)
+            
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Green", -1)
+                size_hint: (1, .5)
+
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Blue", -1)
+                size_hint: (1, .5)
         Button:
             id: roll_input
             text: "Roll"
