@@ -80,6 +80,79 @@
                 font_size: 32
                 on_press: root.press_mod_dice("Blue", -1)
                 size_hint: (1, .5)
+
+        GridLayout:
+            cols: 3
+            rows: 4
+
+            Label:
+                text: "Challenge"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                text: "Difficulty"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                text: "Setback"
+                font_size: 32
+                halign: "center"
+
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Red", 1)
+                size_hint: (1, .5)
+            
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Purple", 1)
+                size_hint: (1, .5)
+
+            Button:
+                text: "^"
+                font_size: 32
+                on_press: root.press_mod_dice("Black", 1)
+                size_hint: (1, .5)
+            
+            Label:
+                id: red_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                id: purple_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Label:
+                id: black_die
+                text: "1"
+                font_size: 32
+                halign: "center"
+
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Red", -1)
+                size_hint: (1, .5)
+            
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Purple", -1)
+                size_hint: (1, .5)
+
+            Button:
+                text: "v"
+                font_size: 32
+                on_press: root.press_mod_dice("Black", -1)
+                size_hint: (1, .5)
         Button:
             id: roll_input
             text: "Roll"

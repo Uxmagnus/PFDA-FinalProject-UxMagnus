@@ -39,20 +39,23 @@ class MyLayout(Widget):
         self.ids.results_label.text = f"{result}"
     def press_mod_dice(self, dice, mod):
         if dice == "Yellow":
-            self.die_count_Yellow = adjust_value(self.die_count_Yellow, mod, 1, 5)
+            self.die_count_Yellow = adjust_value(self.die_count_Yellow, mod, 0, 5)
             self.ids.yellow_die.text = f"{self.die_count_Yellow}"
         if dice == "Green":
-            self.die_count_Green = adjust_value(self.die_count_Green, mod, 1, 5)
+            self.die_count_Green = adjust_value(self.die_count_Green, mod, 0, 5)
             self.ids.green_die.text = f"{self.die_count_Green}"
         if dice == "Blue":
-            self.die_count_Blue = adjust_value(self.die_count_Blue, mod, 1, 5)
+            self.die_count_Blue = adjust_value(self.die_count_Blue, mod, 0, 5)
             self.ids.blue_die.text = f"{self.die_count_Blue}"
         if dice == "Red":
-            self.die_count_Red = adjust_value(self.die_count_Red, mod, 1, 5)
+            self.die_count_Red = adjust_value(self.die_count_Red, mod, 0, 5)
+            self.ids.red_die.text = f"{self.die_count_Red}"
         if dice == "Purple":
-            self.die_count_Purple = adjust_value(self.die_count_Purple, mod, 1, 5)
+            self.die_count_Purple = adjust_value(self.die_count_Purple, mod, 0, 5)
+            self.ids.purple_die.text = f"{self.die_count_Purple}"
         if dice == "Black":
-            self.die_count_Black = adjust_value(self.die_count_Black, mod, 1, 5)
+            self.die_count_Black = adjust_value(self.die_count_Black, mod, 0, 5)
+            self.ids.black_die.text = f"{self.die_count_Black}"
     
 
 class DiceRollerApp(App):
