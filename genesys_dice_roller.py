@@ -12,24 +12,50 @@ class dice():
         self.faces = faces
         self.count = count
 
+#might do something like this later. This iteration of the code will do it a stupid way first.
+""" class faces():
+    def __init__(self, success, advantage, triumph, despair):
+        self.success = success
+        self.advantage = advantage
+        self.triumph = triumph
+        self.despair = despair """
+
 class MyLayout(Widget):
-    # TODO: Refactor this to follow DRY.
     dice_types = {}
-    dice_types["Yellow"] = dice([1,2,3,4,5,6,7,8,9,10,11,12])
-    dice_types["Green"] = dice([1,2,3,4,5,6,7,8])
-    dice_types["Blue"] = dice([1,2,3,4,5,6])
-    dice_types["Red"] = dice([-12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1])
-    dice_types["Purple"] = dice([-8, -7, -6, -5, -4, -3, -2, -1])
-    dice_types["Black"] = dice([-6, -5, -4, -3, -2, -1])
+    dice_types["Yellow"] = dice(["NN","SN","SS","AA","SA","SA","AA","SA","SS","SN","AN","SV"])
+    dice_types["Green"] = dice(["NN","AA","AN","SN","SN","SS","AN","SA"])
+    dice_types["Blue"] = dice(["NN","AA","AN","SN","SA","NN"])
+    dice_types["Red"] = dice(["FD", "TN", "FN", "TT", "FT", "FF", "FN", "TN", "FF", "TT", "FT", "NN"])
+    dice_types["Purple"] = dice(["FF", "TN", "FN", "FT", "TN", "TN", "TT", "NN"])
+    dice_types["Black"] = dice(["NN", "FN", "TN", "FN", "TN", "NN"])
 
 
     def press_roll(self, button):
-        result = 0
-        # TODO: Refactor this to follow DRY
+        success = 0
+        advantage = 0
+        triumph = 0
+        despair = 0
+        roll_result = "" 
         for k,v in MyLayout.dice_types.items():
             for i in range(v.count):
-                result += roll_die(v.faces)
-        self.ids.results_label.text = f"{result}"
+                result = roll_die(v.faces)
+                for letter in result:
+                    match letter:
+                        case "S":
+                            success += 1
+                        case "A":
+                            advantage += 1
+                        case "V":
+                            triumph += 1
+                        case "F":
+                            success -= 1
+                        case "T":
+                            advantage -= 1
+                        case "D":
+                            despair += 1
+                        case "N":
+                            pass
+        self.ids.results_label.text = f"{success} successes, {advantage} advantage, {triumph} triumphs, and {despair} despairs"
 
     def press_mod_dice(self, dice, mod):
         for k,v in MyLayout.dice_types.items():
