@@ -44,6 +44,7 @@ class MyLayout(Widget):
         despair = 0
         light_points = 0
         dark_points = 0
+        force = False
         
         for k,v in MyLayout.dice_types.items():
             for i in range(v.count):
@@ -64,12 +65,14 @@ class MyLayout(Widget):
                             despair += 1
                         case "B":
                             dark_points += 1
+                            force = True
                         case "L":
                             light_points += 1
+                            force = True
                         case "N":
                             pass
         
-        self.ids.results_label.text = f"{generate_roll_result(success, advantage, triumph, despair, light_points, dark_points)}"
+        self.ids.results_label.text = f"{generate_roll_result(success, advantage, triumph, despair, light_points, dark_points, force)}"
 
     def press_mod_dice(self, dice, mod):
         for k,v in MyLayout.dice_types.items():
@@ -102,7 +105,7 @@ def adjust_value(value, adj, min, max):
         return_value = min
     return return_value
 
-def generate_roll_result(success, advantage, triumph, despair, light_points, dark_points):
+def generate_roll_result(success, advantage, triumph, despair, light_points, dark_points, force):
     roll_result = "" 
     if success > 0:
         roll_result += f"successes: {success}\n"
@@ -113,10 +116,11 @@ def generate_roll_result(success, advantage, triumph, despair, light_points, dar
     elif advantage < 0:
         roll_result += f"threat: {advantage * -1}\n"
     if triumph > 0:
-        roll_result += f"triumphs: {triumph} "
+        roll_result += f"triumphs: {triumph}\n"
     if despair > 0:
         roll_result += f"despairs: {despair}\n"
-    roll_result += f"Force Points: {light_points} Light / {dark_points} Dark"
+    if force == True:
+        roll_result += f"Force Points: {light_points} Light / {dark_points} Dark"
     return roll_result
 
 if __name__ == "__main__":

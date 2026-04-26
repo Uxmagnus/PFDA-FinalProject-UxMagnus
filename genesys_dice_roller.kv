@@ -10,156 +10,196 @@
             size_hint: (1, .25)
         GridLayout:
             cols: 3
-            rows: 4
+            rows: 1
+            size_hint: (1, .5)
 
             Label:
                 text: "Proficiency"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
+                size_hint: (1, .5)
 
             Label:
                 text: "Ability"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
+                size_hint: (1, .5)
 
             Label:
                 text: "Boost"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
+                size_hint: (1, .5)
+        GridLayout: 
+            cols: 9
+            rows: 1
+            size_hint: (1, .5)
 
             Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Yellow", 1)
-                size_hint: (1, .5)
-            
-            Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Green", 1)
-                size_hint: (1, .5)
-
-            Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Blue", 1)
-                size_hint: (1, .5)
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Yellow", -1)
+                size_hint: (1, .125)
             
             Label:
                 id: yellow_die
                 text: "1"
-                font_size: 32
+                font_size: 24
                 halign: "center"
+                size_hint: (1, .125)
+            
+            Button:
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Yellow", 1)
+                size_hint: (1, .125)
 
+            Button:
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Green", -1)
+                size_hint: (1, .125)
+            
             Label:
                 id: green_die
                 text: "1"
-                font_size: 32
+                font_size: 24
                 halign: "center"
+                size_hint: (1, .125)
 
+            Button:
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Green", 1)
+                size_hint: (1, .125)
+
+            Button:
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Blue", -1)
+                size_hint: (1, .125)
+            
             Label:
                 id: blue_die
                 text: "1"
-                font_size: 32
+                font_size: 24
                 halign: "center"
+                size_hint: (1, .125)
 
             Button:
-                text: "v"
-                font_size: 32
-                on_press: root.press_mod_dice("Yellow", -1)
-                size_hint: (1, .5)
-            
-            Button:
-                text: "v"
-                font_size: 32
-                on_press: root.press_mod_dice("Green", -1)
-                size_hint: (1, .5)
-
-            Button:
-                text: "v"
-                font_size: 32
-                on_press: root.press_mod_dice("Blue", -1)
-                size_hint: (1, .5)
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Blue", 1)
+                size_hint: (1, .125)
 
         GridLayout:
             cols: 3
-            rows: 4
+            rows: 1
+            size_hint: (1, .5)
 
             Label:
                 text: "Challenge"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
-
+                size_hint: (1, .5)
 
             Label:
                 text: "Difficulty"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
+                size_hint: (1, .5)
 
             Label:
                 text: "Setback"
-                font_size: 32
+                font_size: 24
                 halign: "center"
-                size_hint: (1, .75)
+                size_hint: (1, .5)
+        GridLayout: 
+            cols: 9
+            rows: 1
+            size_hint: (1, .5)
 
             Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Red", 1)
-                size_hint: (1, .5)
-            
-            Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Purple", 1)
-                size_hint: (1, .5)
-
-            Button:
-                text: "^"
-                font_size: 32
-                on_press: root.press_mod_dice("Black", 1)
-                size_hint: (1, .5)
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Red", -1)
+                size_hint: (1, .125)
             
             Label:
                 id: red_die
                 text: "1"
-                font_size: 32
+                font_size: 24
                 halign: "center"
+                size_hint: (1, .125)
+            
+            Button:
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Red", 1)
+                size_hint: (1, .125)
 
+            Button:
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Purple", -1)
+                size_hint: (1, .125)
+            
             Label:
                 id: purple_die
                 text: "1"
-                font_size: 32
+                font_size: 24
                 halign: "center"
+                size_hint: (1, .125)
 
+            Button:
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Purple", 1)
+                size_hint: (1, .125)
+
+            Button:
+                text: "-"
+                font_size: 24
+                on_press: root.press_mod_dice("Black", -1)
+                size_hint: (1, .125)
+            
             Label:
                 id: black_die
                 text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+
+            Button:
+                text: "+"
+                font_size: 24
+                on_press: root.press_mod_dice("Black", 1)
+                size_hint: (1, .125)
+
+        GridLayout:
+            cols: 3
+            rows: 1
+            size_hint: (1, .5)
+
+            Button:
+                text: "- Force Dice"
+                font_size: 32
+                on_press: root.press_mod_dice("Force", -1)
+                size_hint: (1, .125)
+            
+            Label:
+                id: force_die
+                text: "1"
                 font_size: 32
                 halign: "center"
+                size_hint: (1, .125)
 
             Button:
-                text: "v"
+                text: "+ Force Dice"
                 font_size: 32
-                on_press: root.press_mod_dice("Red", -1)
-                size_hint: (1, .5)
-            
-            Button:
-                text: "v"
-                font_size: 32
-                on_press: root.press_mod_dice("Purple", -1)
-                size_hint: (1, .5)
+                on_press: root.press_mod_dice("Force", 1)
+                size_hint: (1, .125)
 
-            Button:
-                text: "v"
-                font_size: 32
-                on_press: root.press_mod_dice("Black", -1)
-                size_hint: (1, .5)
         Button:
             id: roll_input
             text: "Roll"
