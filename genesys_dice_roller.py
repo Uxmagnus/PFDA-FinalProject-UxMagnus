@@ -7,6 +7,8 @@ from kivy.core.window import Window
 
 Builder.load_file('genesys_dice_roller.kv')
 
+Window.size = (600, 800)
+
 class dice():
     def __init__(self, faces, count = 1):
         self.faces = faces
@@ -80,7 +82,7 @@ class MyLayout(Widget):
                 v.count = adjust_value(int(v.count), mod, 0, 5)
                 for widget_id, widget_instance in self.ids.items():
                     if k.lower() in widget_id.lower():
-                        widget_instance.text = f"{v.count}"
+                        widget_instance.text = f"{v.count}" 
     
 
 class DiceRollerApp(App):

@@ -11,43 +11,39 @@
         GridLayout:
             cols: 3
             rows: 1
-            size_hint: (1, .5)
+            size_hint: (1, .25)
 
             Label:
                 text: "Proficiency"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 1, 1, 0, 1
 
             Label:
                 text: "Ability"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 0, 1, 0, 1
 
             Label:
                 text: "Boost"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 0, 0.5, 1, 1
         GridLayout: 
-            cols: 9
+            cols: 6
             rows: 1
-            size_hint: (1, .5)
+            size_hint: (1, .25)
 
             Button:
                 text: "-"
                 font_size: 24
                 on_press: root.press_mod_dice("Yellow", -1)
                 size_hint: (1, .125)
-            
-            Label:
-                id: yellow_die
-                text: "1"
-                font_size: 24
-                halign: "center"
-                size_hint: (1, .125)
-            
+
             Button:
                 text: "+"
                 font_size: 24
@@ -58,13 +54,6 @@
                 text: "-"
                 font_size: 24
                 on_press: root.press_mod_dice("Green", -1)
-                size_hint: (1, .125)
-            
-            Label:
-                id: green_die
-                text: "1"
-                font_size: 24
-                halign: "center"
                 size_hint: (1, .125)
 
             Button:
@@ -78,13 +67,6 @@
                 font_size: 24
                 on_press: root.press_mod_dice("Blue", -1)
                 size_hint: (1, .125)
-            
-            Label:
-                id: blue_die
-                text: "1"
-                font_size: 24
-                halign: "center"
-                size_hint: (1, .125)
 
             Button:
                 text: "+"
@@ -95,41 +77,37 @@
         GridLayout:
             cols: 3
             rows: 1
-            size_hint: (1, .5)
+            size_hint: (1, .25)
 
             Label:
                 text: "Challenge"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 1, 0, 0, 1
 
             Label:
                 text: "Difficulty"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 0.8, 0, 0.8, 1
 
             Label:
                 text: "Setback"
                 font_size: 24
                 halign: "center"
                 size_hint: (1, .5)
+                color: 1, 1, 1, 1
         GridLayout: 
-            cols: 9
+            cols: 6
             rows: 1
-            size_hint: (1, .5)
+            size_hint: (1, .25)
 
             Button:
                 text: "-"
                 font_size: 24
                 on_press: root.press_mod_dice("Red", -1)
-                size_hint: (1, .125)
-            
-            Label:
-                id: red_die
-                text: "1"
-                font_size: 24
-                halign: "center"
                 size_hint: (1, .125)
             
             Button:
@@ -143,13 +121,6 @@
                 font_size: 24
                 on_press: root.press_mod_dice("Purple", -1)
                 size_hint: (1, .125)
-            
-            Label:
-                id: purple_die
-                text: "1"
-                font_size: 24
-                halign: "center"
-                size_hint: (1, .125)
 
             Button:
                 text: "+"
@@ -162,13 +133,6 @@
                 font_size: 24
                 on_press: root.press_mod_dice("Black", -1)
                 size_hint: (1, .125)
-            
-            Label:
-                id: black_die
-                text: "1"
-                font_size: 24
-                halign: "center"
-                size_hint: (1, .125)
 
             Button:
                 text: "+"
@@ -179,7 +143,7 @@
         GridLayout:
             cols: 3
             rows: 1
-            size_hint: (1, .5)
+            size_hint: (1, .25)
 
             Button:
                 text: "- Force Dice"
@@ -199,6 +163,65 @@
                 font_size: 32
                 on_press: root.press_mod_dice("Force", 1)
                 size_hint: (1, .125)
+
+        GridLayout: 
+            cols: 3
+            rows: 1
+            size_hint: (1, .25)
+            
+            Label:
+                id: yellow_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 1, 1, 0, 1
+
+            Label:
+                id: green_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 0, 1, 0, 1
+
+            Label:
+                id: blue_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 0, 0.5, 1, 1
+
+        GridLayout: 
+            cols: 3
+            rows: 1
+            size_hint: (1, .25)
+
+            Label:
+                id: red_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 1, 0, 0, 1
+            
+            Label:
+                id: purple_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 0.8, 0, 0.8, 1
+
+
+            Label:
+                id: black_die
+                text: "1"
+                font_size: 24
+                halign: "center"
+                size_hint: (1, .125)
+                color: 1, 1, 1, 1
 
         Button:
             id: roll_input
