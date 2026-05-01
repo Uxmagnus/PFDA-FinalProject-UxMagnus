@@ -82,7 +82,15 @@ class MyLayout(Widget):
                 v.count = adjust_value(int(v.count), mod, 0, 5)
                 for widget_id, widget_instance in self.ids.items():
                     if k.lower() in widget_id.lower():
-                        widget_instance.text = f"{v.count}" 
+                        new_text = ""
+                        for i in range(v.count):
+                            if k == "Yellow" or k == "Red" or k == "Force":
+                                new_text = new_text + "0"
+                            if k == "Green" or k == "Purple":
+                                new_text = new_text + "^"
+                            if k == "Blue" or k == "Black":
+                                new_text = new_text + "o"
+                        widget_instance.text = f"{new_text}" 
     
 
 class DiceRollerApp(App):
