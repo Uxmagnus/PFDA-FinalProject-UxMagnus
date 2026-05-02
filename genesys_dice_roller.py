@@ -103,7 +103,7 @@ def smallest_int(int1, int2):
     elif int1 < int2:
         return int1
     
-def roll_weighted(die_size, die_count = 1):
+def gen_result(die_size, die_count = 1):
     roll_result = 0
     die_half = die_size//2
     for i in range(0,die_count):
@@ -112,7 +112,7 @@ def roll_weighted(die_size, die_count = 1):
     return roll_result
     
 def roll_die(die):
-    die_face = roll_weighted(len(die))
+    die_face = gen_result(len(die))
     return die[die_face - 1]
 
 def adjust_value(value, adj, min, max):
