@@ -103,9 +103,17 @@ def smallest_int(int1, int2):
     elif int1 < int2:
         return int1
     
+def roll_weighted(die_size, die_count = 1):
+    roll_result = 0
+    die_half = die_size//2
+    for i in range(0,die_count):
+        odds = random.randrange(0,die_half)
+        roll_result += (random.randrange(0, die_size - (odds + 1)) + (odds + 2))
+    return roll_result
+    
 def roll_die(die):
-    die_face = random.randrange(0,len(die))
-    return die[die_face]
+    die_face = roll_weighted(len(die))
+    return die[die_face - 1]
 
 def adjust_value(value, adj, min, max):
     return_value = value + adj
