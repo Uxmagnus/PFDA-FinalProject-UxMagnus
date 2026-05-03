@@ -16,7 +16,7 @@ LabelBase.register(name="StarWarsSymbols",
                    fn_regular='EotE_Symbol-Regular_v1.otf',)
 
 class dice():
-    def __init__(self, faces, count = 1):
+    def __init__(self, faces, count = 0):
         self.faces = faces
         self.count = count
 
@@ -93,13 +93,16 @@ class MyLayout(Widget):
                 for widget_id, widget_instance in self.ids.items():
                     if k.lower() in widget_id.lower():
                         new_text = ""
-                        for i in range(v.count):
-                            if k == "Yellow" or k == "Red" or k == "Force":
-                                new_text = new_text + "C"
-                            if k == "Green" or k == "Purple":
-                                new_text = new_text + "D"
-                            if k == "Blue" or k == "Black":
-                                new_text = new_text + "B"
+                        if (v.count == 0):
+                            new_text += "-"
+                        else:
+                            for i in range(v.count):
+                                if k == "Yellow" or k == "Red" or k == "Force":
+                                    new_text = new_text + "C"
+                                if k == "Green" or k == "Purple":
+                                    new_text = new_text + "D"
+                                if k == "Blue" or k == "Black":
+                                    new_text = new_text + "B"
                         widget_instance.text = f"{new_text}" 
     
 
