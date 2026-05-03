@@ -9,6 +9,12 @@ Builder.load_file('genesys_dice_roller.kv')
 
 Window.size = (600, 800)
 
+from kivy.core.text import LabelBase
+
+# Register the font before building the app
+LabelBase.register(name="StarWarsSymbols", 
+                   fn_regular='EotE_Symbol-Regular_v1.otf',)
+
 class dice():
     def __init__(self, faces, count = 1):
         self.faces = faces
@@ -33,11 +39,11 @@ class MyLayout(Widget):
     # Challenge Dice Breakdown: Blank, Failure, Failure, 2 Failures, 2 Failures, Threat, Threat, Failure+Threat, Failure+Threat, 2 Threats, 2 Threats, Despair (+Failure)
     dice_types["Red"] = dice(["FD", "TN", "FN", "TT", "FT", "FF", "FN", "TN", "FF", "TT", "FT", "NN"])
     # Difficulty Dice Breakdown: Blank, Failure, Failure, 2 Failures, 2 Failures, Threat, Threat, Failure+Threat, Failure+Threat, 2 Threats, 2 Threats, Despair.
-    dice_types["Purple"] = dice(["FF", "TN", "FN", "FT", "TN", "TN", "TT", "NN"])
+    dice_types["Purple"] = dice(["FF", "TN", "TN", "FT", "TN", "FN", "TT", "NN"])
     # Setback Dice Breakdown: Blank, Blank, Failure, Failure, Threat, Threat.
     dice_types["Black"] = dice(["NN", "FN", "TN", "FN", "TN", "NN"])
     # Force Dice Breakdown: 5 Dark Side, 1 Dark Side * 2, 3 Light Side, 3 Light Side * 2
-    dice_types["Force"] = dice(["BN", "BN", "BN", "BN", "BN", "BB", "LN", "LN","LN", "LL", "LL", "LL"]) 
+    dice_types["Force"] = dice(["BN", "BB", "BN", "BN", "BN", "BN", "LN", "LN","LN", "LL", "LL", "LL"]) 
 
     def press_roll(self, button):
         success = 0
@@ -85,11 +91,11 @@ class MyLayout(Widget):
                         new_text = ""
                         for i in range(v.count):
                             if k == "Yellow" or k == "Red" or k == "Force":
-                                new_text = new_text + "0"
+                                new_text = new_text + "C"
                             if k == "Green" or k == "Purple":
-                                new_text = new_text + "^"
+                                new_text = new_text + "D"
                             if k == "Blue" or k == "Black":
-                                new_text = new_text + "o"
+                                new_text = new_text + "B"
                         widget_instance.text = f"{new_text}" 
     
 
@@ -112,8 +118,10 @@ def gen_result(die_size, die_count = 1):
     return roll_result
     
 def roll_die(die):
-    die_face = gen_result(len(die))
-    return die[die_face - 1]
+    #die_face = gen_result(len(die))
+    #return die[die_face - 1]
+    die_face = random.randrange(0,len(die))
+    return die[die_face]
 
 def adjust_value(value, adj, min, max):
     return_value = value + adj
