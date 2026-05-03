@@ -5,7 +5,7 @@ from kivy.properties import ObjectProperty, NumericProperty, BooleanProperty, St
 from kivy.lang import Builder
 from kivy.core.window import Window
 
-Builder.load_file('genesys_dice_roller.kv')
+Builder.load_file('star_wars_dice_roller.kv')
 
 Window.size = (600, 800)
 
