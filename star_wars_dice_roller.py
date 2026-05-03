@@ -81,6 +81,9 @@ class MyLayout(Widget):
                             force = True
                         case "N":
                             pass
+                
+        if (success - failure) == 0:
+            failure -= 1
         self.ids.results_label_symbols.text = f"{generate_symbols_result(success, failure, advantage, threat, triumph, despair, light_points, dark_points)}"
         success -= failure
         advantage -= threat
