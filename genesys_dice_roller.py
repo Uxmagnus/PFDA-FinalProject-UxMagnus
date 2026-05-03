@@ -47,7 +47,9 @@ class MyLayout(Widget):
 
     def press_roll(self, button):
         success = 0
+        failure = 0
         advantage = 0
+        threat = 0
         triumph = 0
         despair = 0
         light_points = 0
@@ -66,9 +68,9 @@ class MyLayout(Widget):
                         case "V":
                             triumph += 1
                         case "F":
-                            success -= 1
+                            failure += 1
                         case "T":
-                            advantage -= 1
+                            threat += 1
                         case "D":
                             despair += 1
                         case "B":
@@ -79,7 +81,9 @@ class MyLayout(Widget):
                             force = True
                         case "N":
                             pass
-        
+        self.ids.results_label_symbols.text = f"{generate_symbols_result(success, failure, advantage, threat, triumph, despair, light_points, dark_points)}"
+        success -= failure
+        advantage -= threat
         self.ids.results_label.text = f"{generate_roll_result(success, advantage, triumph, despair, light_points, dark_points, force)}"
 
     def press_mod_dice(self, dice, mod):
@@ -130,6 +134,33 @@ def adjust_value(value, adj, min, max):
     if (return_value < min):
         return_value = min
     return return_value
+
+def generate_symbols_result(success, failure, advantage, threat, triumph, despair, light_points, dark_points):
+    roll_result = "" 
+    for i in range(0,success):
+        roll_result += "s"
+    for i in range(0,failure):
+        roll_result += "f"
+    if (success > 0) or (failure > 0):
+        roll_result += "\n"
+    for i in range(0,advantage):
+        roll_result += "a"
+    for i in range(0,threat):
+        roll_result += "t"
+    if (advantage > 0) or (threat > 0):
+        roll_result += "\n"
+    for i in range(0,triumph):
+        roll_result += "x"
+    for i in range(0,despair):
+        roll_result += "y"
+    if (triumph > 0) or (despair > 0):
+        roll_result += "\n"
+    for i in range(0,light_points):
+        roll_result += "z"
+    for i in range(0,dark_points):
+        roll_result += "Z"
+
+    return roll_result
 
 def generate_roll_result(success, advantage, triumph, despair, light_points, dark_points, force):
     roll_result = "" 
