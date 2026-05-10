@@ -20,14 +20,6 @@ class dice():
         self.faces = faces
         self.count = count
 
-#might do something like this later. This iteration of the code will do it a stupid way first.
-""" class faces():
-    def __init__(self, success, advantage, triumph, despair):
-        self.success = success
-        self.advantage = advantage
-        self.triumph = triumph
-        self.despair = despair """
-
 class MyLayout(Widget):
     dice_types = {}
     # Proficiency Dice Breakdown: Blank, Success, Success, 2 Successes, 2 Successes, Advantage, Success+Advantage, Success+Advantage, Success+Advantage, 2 Advantages, 2 Advantages, Triumph (+Success)
