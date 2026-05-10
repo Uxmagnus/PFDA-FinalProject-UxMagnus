@@ -37,7 +37,7 @@ class MyLayout(Widget):
     # Force Dice Breakdown: 5 Dark Side, 1 Dark Side * 2, 3 Light Side, 3 Light Side * 2
     dice_types["Force"] = dice(["BN", "BB", "BN", "BN", "BN", "BN", "LN", "LN","LN", "LL", "LL", "LL"]) 
 
-    def press_roll(self, button):
+    def press_roll(self):
         success = 0
         failure = 0
         advantage = 0
@@ -75,7 +75,10 @@ class MyLayout(Widget):
                             pass
                 
         if (success - failure) == 0:
-            failure -= 1
+            if success == 0 and failure == 0:
+                success += 1
+            else:
+                failure -= 1
         self.ids.results_label_symbols.text = f"{generate_symbols_result(success, failure, advantage, threat, triumph, despair, light_points, dark_points)}"
         success -= failure
         advantage -= threat
@@ -111,17 +114,7 @@ def smallest_int(int1, int2):
     elif int1 < int2:
         return int1
     
-def gen_result(die_size, die_count = 1):
-    roll_result = 0
-    die_half = die_size//2
-    for i in range(0,die_count):
-        odds = random.randrange(0,die_half)
-        roll_result += (random.randrange(0, die_size - (odds + 1)) + (odds + 2))
-    return roll_result
-    
 def roll_die(die):
-    #die_face = gen_result(len(die))
-    #return die[die_face - 1]
     die_face = random.randrange(0,len(die))
     return die[die_face]
 
